@@ -35,7 +35,7 @@ You can build and install tests:
 cmake -S robotino2-wrapper/ -B build/ -DBUILD_TESTS=ON -DINSTALL_TESTS=ON
 ```
 
-## Using Robotino4 with gcc and CMake
+## Using Robotino2 Wrapper with gcc and CMake
 
 Add this strings in your CMakeLists.txt file:
 ```

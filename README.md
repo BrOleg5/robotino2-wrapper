@@ -1,4 +1,4 @@
-# Robotino4 library
+# Robotino2 Wrapper
 
 There is Festo [OpenRobotiAPI](https://wiki.openrobotino.org/index.php?title=OpenRobotinoAPI) wrapper.
 
@@ -26,13 +26,13 @@ sudo cmake --install build/
 You can also build and install shared library:
 ```
 # Configure as shared library
-cmake -S robotino4-lib/ -B build/ -DBUILD_SHARED_LIBS=ON
+cmake -S robotino2-wrapper/ -B build/ -DBUILD_SHARED_LIBS=ON
 ```
 
 You can build and install tests:
 ```
 # Configure as static library
-cmake -S robotino4-lib/ -B build/ -DBUILD_TESTS=ON -DINSTALL_TESTS=ON
+cmake -S robotino2-wrapper/ -B build/ -DBUILD_TESTS=ON -DINSTALL_TESTS=ON
 ```
 
 ## Using Robotino4 with gcc and CMake

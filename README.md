@@ -16,7 +16,7 @@ There is Festo [OpenRobotiAPI](https://wiki.openrobotino.org/index.php?title=Ope
 # Create build directory
 mkdir build
 
-# Configure as static library
+# Configure
 cmake -S robotino2-wrapper/ -B build/ -G "Visual Studio 15"
 
 # Build
@@ -26,15 +26,9 @@ cmake --build build/
 sudo cmake --install build/
 ```
 
-You can also build and install shared library:
-```
-# Configure as shared library
-cmake -S robotino2-wrapper/ -B build/ -DBUILD_SHARED_LIBS=ON
-```
-
 You can build and install tests:
 ```
-# Configure as static library
+# Configure
 cmake -S robotino2-wrapper/ -B build/ -DBUILD_TESTS=ON -DINSTALL_TESTS=ON
 ```
 

@@ -135,14 +135,30 @@ std::vector<float> Robotino2::get_actual_currents()
 
 void Robotino2::set_motor_speed(size_t num, float speed)
 {
-    motor[num].setSpeedSetPoint(60 * speed / (2 * PI));
+    if(speed > motor_vel_limit) {
+        const size_t buf_size = 50;
+        char buffer[buf_size];
+        sprintf_s(buffer, buf_size, "Set point %d motor's velocity higher than %f rad/s.\n", num, motor_vel_limit);
+        throw std::invalid_argument(buffer);
+    }
+    else {
+        motor[num].setSpeedSetPoint(60 * speed / (2 * PI));
+    }
 }
 
 void Robotino2::set_motors_speed(const std::vector<float>& speeds)
 {
     for (size_t i = 0; i < motor_num; i++)
     {
-        motor[i].setSpeedSetPoint(60 * speeds[i] / (2 * PI));
+        if(speeds[i] > motor_vel_limit) {
+            const size_t buf_size = 50;
+            char buffer[buf_size];
+            sprintf_s(buffer, buf_size, "Set point %d motor's velocity higher than %f rad/s.\n", i, motor_vel_limit);
+            throw std::invalid_argument(buffer);
+        }
+        else {
+            motor[i].setSpeedSetPoint(60 * speeds[i] / (2 * PI));
+        }
     }
 }
 
@@ -175,5 +191,31 @@ void Robotino2::set_motors_pid(const std::vector<float>& kp, const std::vector<f
 
 void Robotino2::set_robot_speed(float vx, float vy, float omega)
 {
-    omniDrive.setVelocity(vx*1000.0, vy*1000.0, omega);
+    const size_t buf_size = 50;
+    char buffer[buf_size];
+    if(vx > robot_lin_speed_limit) {
+        sprintf_s(buffer, buf_size, "Set point robot's speed along X axis higher than %f m/s.\n", robot_lin_speed_limit);
+        throw std::invalid_argument(buffer);
+    }
+    if(vy > robot_lin_speed_limit) {
+        sprintf_s(buffer, buf_size, "Set point robot's speed along Y axis higher than %f m/s.\n", robot_lin_speed_limit);
+        throw std::invalid_argument(buffer);
+    }
+    if(omega > robot_vel_limit) {
+        sprintf_s(buffer, buf_size, "Set point robot's angular velocity higher than %f rad/s.\n", robot_vel_limit);
+        throw std::invalid_argument(buffer);
+    }
+    omniDrive.setVelocity(vx*1000.0, vy*1000.0, omega*180/PI);
+}
+
+std::vector<float> Robotino2::robot_speed_to_motor_speeds(float vx, float vy, float omega)
+{
+    float m1, m2, m3;
+    omniDrive.project(&m1, &m2, &m3, vx*1000.0, vy*1000.0, omega);
+    std::vector<float> res = {m1, m2, m3};
+    for (size_t i = 0; i < 3; i++)
+    {
+        res[i] = 2 * PI * res[i] / 60;
+    }
+    return res;
 }

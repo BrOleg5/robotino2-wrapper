@@ -18,7 +18,12 @@ int main( int argc, char **argv )
     timer.start();
     while (timer.msecsElapsed() <= test_duration)
     {
-        robotino.set_robot_speed(0.1, 0, 0);
+        try {
+            robotino.set_robot_speed(0.1, 0, 0);
+        }
+        catch(const std::invalid_argument& e) {
+            std::cout << "set_robot_speed() failed with error: " << e.what();
+        }
         std::cout << " | " << timer.msecsElapsed() << " | " << robotino.get_actual_position(0) << " | " << robotino.get_actual_position(1) << " | ";
         std::cout << robotino.get_actual_position(2) << " | " << robotino.get_actual_velocity(0) << " | " << robotino.get_actual_velocity(1) << " | ";
         std::cout << robotino.get_actual_velocity(2) << " | " << robotino.get_actual_current(0) << " | " << robotino.get_actual_current(1) << " | ";

@@ -8,5 +8,5 @@ target_link_libraries(Robotino2Test PUBLIC Robotino2Lib)
 if(INSTALL_TESTS)
         install(TARGETS Robotino2Test
                 EXPORT Robotino2Targets
-                RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}/Robotino2Test" COMPONENT bin)
+                RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}/test" COMPONENT bin)
 endif()

@@ -2,6 +2,7 @@
 #   define ROBOTINO2_HPP 
 
 #include <iostream>
+#include <cmath>
 #include <vector>
 #include <stdexcept>
 #include "rec/robotino/com/all.h"
@@ -160,17 +161,17 @@ private:
     /**
      * Motor's velocity limit in rad/s.
      */
-    const float motor_vel_limit = 100;
+    const float motor_vel_limit = 240;
 
     /**
      * Robot's linear speed limit in m/s.
      */
-    const float robot_lin_speed_limit = 1;
+    const float robot_lin_speed_limit = 0.8f;
 
     /**
      * Robot's angular velocity limit in rad/s.
      */
-    const float robot_vel_limit = PI;
+    const float robot_vel_limit = (float) PI;
 
 public:
 
@@ -264,7 +265,7 @@ public:
      * If value is given, the microcontroller firmware uses its build in default value.
      * Robotino v3 Parameters are floating point values used by the microcontroller directly. If parameter is less than 0 the default parameter is used.
      */
-    void set_motor_pid(size_t num, float kp, float ki, float kd);
+    void set_motor_pid(size_t num, unsigned char kp, unsigned char ki, unsigned char kd);
 
     /**
      * Sets the proportional, integral and differential constants of the PID controllers.
@@ -276,7 +277,7 @@ public:
      * If value is given, the microcontroller firmware uses its build in default value.
      * Robotino v3 Parameters are floating point values used by the microcontroller directly. If parameter is less than 0 the default parameter is used.
      */
-    void set_motors_pid(const std::vector<float>& kp, const std::vector<float>& ki, const std::vector<float>& kd);
+    void set_motors_pid(const std::vector<unsigned char>& kp, const std::vector<unsigned char>& ki, const std::vector<unsigned char>& kd);
 
     /**
      * Set robot speed.

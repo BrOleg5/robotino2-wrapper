@@ -19,7 +19,7 @@ int main( int argc, char **argv )
     while (timer.msecsElapsed() <= test_duration)
     {
         try {
-            robotino.set_robot_speed(0.1, 0, 0);
+            robotino.set_robot_speed((float)0.1, (float)0, (float)0);
         }
         catch(const std::invalid_argument& e) {
             std::cout << "set_robot_speed() failed with error: " << e.what();

@@ -23,7 +23,7 @@ target_link_libraries(Robotino2Lib PUBLIC D:/Libraries/OpenRobotinoAPI/1/lib/win
 
 target_include_directories(Robotino2Lib PUBLIC
                            $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
-                           $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/Robotino2>
+                           $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>
                            "D:/Libraries/OpenRobotinoAPI/1/include"
                            "D:/Libraries/OpenRobotinoAPI/share/include")
 

@@ -16,17 +16,16 @@ include(GNUInstallDirs)
 set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_LIBDIR}")
 set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 
-option(BUILD_TESTS "Build tests programs." OFF)
-option(INSTALL_TESTS "Install tests programs." OFF)
+option(BUILD_TESTS "Build and install tests programs." OFF)
 
 add_subdirectory(src)
 
-if(BUILD_TESTS OR INSTALL_TESTS)
+if(BUILD_TESTS)
         add_subdirectory(tests)
 endif()
 
 # Add all targets to the build-tree export set
-if(BUILD_TESTS OR INSTALL_TESTS)
+if(BUILD_TESTS)
   export(TARGETS Robotino2Lib Robotino2Test
          FILE "${PROJECT_BINARY_DIR}/cmake/Robotino2Targets.cmake")
 else()

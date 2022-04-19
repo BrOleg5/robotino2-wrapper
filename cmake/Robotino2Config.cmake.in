@@ -15,6 +15,6 @@ endif()
 
 # These are IMPORTED targets created by Robotino2Targets.cmake
 set(Robotino2_LIBRARIES Robotino2Lib)
-if(@INSTALL_TESTS@)
+if(@BUILD_TESTS@)
     set(Robotino2_EXECUTABLE main_test)
 endif()

@@ -6,7 +6,7 @@ There is Festo [OpenRobotinoAPI](https://wiki.openrobotino.org/index.php?title=O
 
 - CMake v3.0 or later
 - OpenRobotinoAPI v1.8.31 or later
-- compiler: MSVC v19 or later (Visual Studio 2017)
+- compiler: MSVC v19 (Visual Studio 2017) or later
 
 ## Configure, build and install library with CMake
 
@@ -17,7 +17,7 @@ There is Festo [OpenRobotinoAPI](https://wiki.openrobotino.org/index.php?title=O
 mkdir .\build\
 
 # Configure. Build system generator <generator-name>: for MSVC 19 (Visual Studio 2017) is "Visual Studio 15".
-# Command "cmake --help" print full lust of generators that are available on your platform
+# Command "cmake --help" print full list of generators that are available on your platform
 cmake -S .\robotino2-wrapper\ -B .\build\ -G <generator-name>
 
 # Build certain configuration <cfg>: Debug (default), Release
@@ -41,5 +41,5 @@ Add this strings in your CMakeLists.txt file:
 find_package(Robotino2 1.0 REQUIRED)
 target_link_libraries(<ProjectName> Robotino2Lib)
 # if necessary, add include directories to target
-target_include_directories(<ProjectName> ${Robotino2_INCLUDE_DIRS})
+# target_include_directories(<ProjectName> ${Robotino2_INCLUDE_DIRS})
 ```

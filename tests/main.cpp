@@ -1,5 +1,8 @@
 #include "robotino2.hpp"
 
+#include "rec/core_lt/Timer.h"
+#include "rec/core_lt/utils.h"
+
 int main( int argc, char **argv )
 {
     //Default IP addres Robotino 2

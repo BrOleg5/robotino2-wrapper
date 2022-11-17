@@ -12,34 +12,34 @@ There is Festo [OpenRobotinoAPI](https://wiki.openrobotino.org/index.php?title=O
 
 ### Windows 10 x86
 
-```
+```bash
 # Create build directory
-mkdir .\build\
+mkdir ./build/
 
-# Configure. Build system generator <generator-name>: for MSVC 19 (Visual Studio 2017) is "Visual Studio 15".
-# Command "cmake --help" print full list of generators that are available on your platform
-cmake -S .\robotino2-wrapper\ -B .\build\ -G <generator-name>
+cmake -S ./robotino2-wrapper/ -B ./build/
 
 # Build certain configuration <cfg>: Debug (default), Release
-cmake --build .\build\ --config <cfg>
+cmake --build ./build/ --config <cfg>
 
 # Install certain configuration <cfg>: Debug (default), Release
 # <prefix> is installation path (default SystemPartition:\Program Files (x86)\<project name>)
-cmake --install .\build\ --config <cfg> --prefix <prefix>
+cmake --install ./build/ --config <cfg> --prefix <prefix>
 ```
 
 You can build and install test programs. For this add option `-D BUILD_TESTS=ON`.
-```
+
+```bash
 # Configure
-cmake -S .\robotino2-wrapper\ -B .\build\ -D BUILD_TESTS=ON
+cmake -S ./robotino2-wrapper/ -B ./build/ -D BUILD_TESTS=ON
 ```
 
 ## Using Robotino2 Wrapper with CMake
 
 Add this strings in your CMakeLists.txt file:
-```
-find_package(Robotino2 1.0 REQUIRED)
-target_link_libraries(<ProjectName> Robotino2Lib)
+
+```bash
+find_package(Robotino2Wrapper 1.0 REQUIRED)
+target_link_libraries(<ProjectName> robotino2wrapper)
 # if necessary, add include directories to target
-# target_include_directories(<ProjectName> ${Robotino2_INCLUDE_DIRS})
+# target_include_directories(<ProjectName> ${Robotino2Wrapper_INCLUDE_DIRS})
 ```

@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.0)
 
-project(Robotino2 VERSION 1.1.0 DESCRIPTION "Library for Festo Robotino 2")
+project(Robotino2Wrapper VERSION 1.1.0 DESCRIPTION "Library for Festo Robotino 2")
 
 option(BUILD_TESTS "Build and install tests programs." OFF)
 

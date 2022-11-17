@@ -1,9 +1,9 @@
-add_executable(Robotino2Test main.cpp)
+add_executable(robotino2test main.cpp)
 
-set_target_properties(Robotino2Test PROPERTIES VERSION ${PROJECT_VERSION})
+set_target_properties(robotino2test PROPERTIES VERSION ${PROJECT_VERSION})
 
-target_link_libraries(Robotino2Test PUBLIC Robotino2Lib)
+target_link_libraries(robotino2test PUBLIC robotino2wrapper)
 
-install(TARGETS Robotino2Test
+install(TARGETS robotino2test
         EXPORT ${PROJECT_NAME}Targets
         RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}/test" COMPONENT bin)

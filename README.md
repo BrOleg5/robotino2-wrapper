@@ -14,23 +14,29 @@ There is Festo [OpenRobotinoAPI](https://wiki.openrobotino.org/index.php?title=O
 
 ```bash
 # Create build directory
-mkdir ./build/
+mkdir build
 
-cmake -S ./robotino2-wrapper/ -B ./build/
+cmake -S robotino2-wrapper -B build
 
 # Build certain configuration <cfg>: Debug (default), Release
-cmake --build ./build/ --config <cfg>
+cmake --build build --config <cfg>
 
 # Install certain configuration <cfg>: Debug (default), Release
 # <prefix> is installation path (default SystemPartition:\Program Files (x86)\<project name>)
-cmake --install ./build/ --config <cfg> --prefix <prefix>
+cmake --install build --config <cfg> --prefix <prefix>
 ```
 
-You can build and install test programs. For this add option `-D BUILD_TESTS=ON`.
+You can build and install test programs. For this add option `-D BUILD_TESTS=ON`
 
 ```bash
 # Configure
-cmake -S ./robotino2-wrapper/ -B ./build/ -D BUILD_TESTS=ON
+cmake -S robotino2-wrapper -B build -D BUILD_TESTS=ON
+```
+
+To build Doxygen documentation, use target `doxygen`
+
+```bash
+cmake --build build --config <cfg> --target doxygen
 ```
 
 ## Using Robotino2 Wrapper with CMake

@@ -3,6 +3,9 @@ cmake_minimum_required(VERSION 3.9)
 project(Robotino2Wrapper VERSION 1.1.0 DESCRIPTION "Library for Festo Robotino 2")
 
 option(BUILD_EXAMPLE "Build and install example programs." OFF)
+option(BUILD_DOC "Build and install documentation." OFF)
+
+include(GNUInstallDirs)
 
 add_subdirectory(src)
 
@@ -10,22 +13,8 @@ if(BUILD_EXAMPLE)
   add_subdirectory(example)
 endif()
 
-find_package(Doxygen)
-
-if(DOXYGEN_FOUND)
-  set(DOXYGEN_REPEAT_BRIEF NO)
-  set(DOXYGEN_EXAMPLE_PATH ${PROJECT_SOURCE_DIR}/example)
-  set(DOXYGEN_QUIET YES)
-  set(DOXYGEN_CLASS_GRAPH NO)
-  set(DOXYGEN_COLLABORATION_GRAPH NO)
-
-  doxygen_add_docs(
-    doxygen
-    ${PROJECT_SOURCE_DIR}
-    COMMENT "Generate documentation"
-  )
-else()
-  message(WARNING "Doxygen need to be installed to generate the doxygen documentation.")
+if(BUILD_DOC)
+  add_subdirectory(doc)
 endif()
 
 export(EXPORT ${PROJECT_NAME}Targets

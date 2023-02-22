@@ -6,5 +6,5 @@ target_link_libraries(move_forward PUBLIC robotino2wrapper)
 
 install(TARGETS move_forward
   EXPORT ${PROJECT_NAME}Targets
-  RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}/example" COMPONENT bin
+  RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}" COMPONENT bin
 )

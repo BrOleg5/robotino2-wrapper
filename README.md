@@ -8,6 +8,10 @@ There is Festo [OpenRobotinoAPI](https://wiki.openrobotino.org/index.php?title=O
 - OpenRobotinoAPI v1.8.31 or later
 - compiler: MSVC v19 (Visual Studio 2017) or later
 
+Optional:
+
+- Doxygen v1.8.0 or later
+
 ## Configure, build and install library with CMake
 
 ### Windows 10 x86
@@ -33,10 +37,11 @@ You can build and install test programs. For this add option `-D BUILD_TESTS=ON`
 cmake -S robotino2-wrapper -B build -D BUILD_TESTS=ON
 ```
 
-To build Doxygen documentation, use target `doxygen`
+To build Doxygen documentation, use target `doxygen` and configuration Release
 
 ```bash
-cmake --build build --config <cfg> --target doxygen
+cmake --build build --config Release --target doxygen --prefix <prefix>
+cmake --install build --config Release --target doxygen --prefix <prefix>
 ```
 
 ## Using Robotino2 Wrapper with CMake

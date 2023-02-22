@@ -12,8 +12,6 @@ target_link_libraries(robotino2wrapper PUBLIC ${OPENROBOTINOAPI_DIR}/rec_core_lt
   ${OPENROBOTINOAPI_DIR}/rec_robotino_com.lib
 )
 
-include(GNUInstallDirs)
-
 target_include_directories(robotino2wrapper PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
   $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>

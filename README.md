@@ -37,9 +37,10 @@ You can build and install test programs. For this add option `-D BUILD_TESTS=ON`
 cmake -S robotino2-wrapper -B build -D BUILD_TESTS=ON
 ```
 
-To build Doxygen documentation, use target `doxygen` and configuration Release
+To build Doxygen documentation, use `BUILD_DOC` option, `doxygen` target and `Release` configuration
 
 ```bash
+cmake -S robotino4-lib/ -B build/ -D BUILD_DOC=ON
 cmake --build build --config Release --target doxygen --prefix <prefix>
 cmake --install build --config Release --target doxygen --prefix <prefix>
 ```
@@ -48,7 +49,7 @@ cmake --install build --config Release --target doxygen --prefix <prefix>
 
 Add this strings in your CMakeLists.txt file:
 
-```bash
+```CMake
 find_package(Robotino2Wrapper 1.0 REQUIRED)
 target_link_libraries(<ProjectName> robotino2wrapper)
 # if necessary, add include directories to target
